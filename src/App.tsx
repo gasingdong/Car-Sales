@@ -6,16 +6,18 @@ import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
-import { addFeatureAction } from './actions/actions';
+import { addFeatureAction, removeFeatureAction } from './actions/actions';
 
 interface AppProps {
   addFeature: (feature: Item) => void;
+  removeFeature: (feature: Item) => void;
 }
 
 const App = (props: StoreState & AppProps): React.ReactElement => {
-  const { car, store, addFeature } = props;
-  const removeFeature = (item: Item): void => {
-    // dispatch an action here to remove an item
+  const { car, store, addFeature, removeFeature } = props;
+
+  const removeItem = (item: Item): void => {
+    removeFeature(item);
   };
 
   const buyItem = (item: Item): void => {
@@ -26,7 +28,7 @@ const App = (props: StoreState & AppProps): React.ReactElement => {
     <div className="boxes">
       <div className="box">
         <Header car={car} />
-        <AddedFeatures car={car} />
+        <AddedFeatures car={car} removeItem={removeItem} />
       </div>
       <div className="box">
         <AdditionalFeatures store={store} buyItem={buyItem} />
@@ -46,5 +48,5 @@ const mapStateToProps = (state: StoreState): StoreState => {
 
 export default connect(
   mapStateToProps,
-  { addFeature: addFeatureAction }
+  { addFeature: addFeatureAction, removeFeature: removeFeatureAction }
 )(App);

@@ -1,5 +1,5 @@
 import { StoreState } from '../interfaces/interfaces';
-import { FeatureAction, ADD_FEATURE } from '../actions/actions';
+import { FeatureAction, ADD_FEATURE, REMOVE_FEATURE } from '../actions/actions';
 
 export const initialState: StoreState = {
   additionalPrice: 0,
@@ -22,7 +22,6 @@ export const reducer = (
   state = initialState,
   action: FeatureAction
 ): StoreState => {
-  console.log('reduce', action);
   switch (action.type) {
     case ADD_FEATURE:
       return {
@@ -30,6 +29,16 @@ export const reducer = (
         car: {
           ...state.car,
           features: [...state.car.features, action.payload],
+        },
+      };
+    case REMOVE_FEATURE:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            (feature): boolean => feature.id !== action.payload.id
+          ),
         },
       };
     default:
