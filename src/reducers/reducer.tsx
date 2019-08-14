@@ -26,6 +26,7 @@ export const reducer = (
     case ADD_FEATURE:
       return {
         ...state,
+        additionalPrice: state.additionalPrice + action.payload.price,
         car: {
           ...state.car,
           features: [...state.car.features, action.payload],
@@ -34,6 +35,10 @@ export const reducer = (
     case REMOVE_FEATURE:
       return {
         ...state,
+        additionalPrice: Math.max(
+          0,
+          state.additionalPrice - action.payload.price
+        ),
         car: {
           ...state.car,
           features: state.car.features.filter(
