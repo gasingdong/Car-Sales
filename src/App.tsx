@@ -21,7 +21,9 @@ const App = (props: StoreState & AppProps): React.ReactElement => {
   };
 
   const buyItem = (item: Item): void => {
-    addFeature(item);
+    if (!car.features.find((feature): boolean => feature.id === item.id)) {
+      addFeature(item);
+    }
   };
 
   return (
