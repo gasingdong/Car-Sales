@@ -6,7 +6,7 @@ interface TotalProps {
   additionalPrice: number;
 }
 
-const Total = (props: TotalProps) => {
+const Total = (props: TotalProps): React.ReactElement => {
   const { car, additionalPrice } = props;
   return (
     <div className="content">

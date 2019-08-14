@@ -6,7 +6,7 @@ import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import { Item } from './interfaces/CarInterfaces';
 
-const App = () => {
+const App = (): React.ReactElement => {
   const state = {
     additionalPrice: 0,
     car: {
@@ -24,11 +24,11 @@ const App = () => {
     ],
   };
 
-  const removeFeature = (item: Item) => {
+  const removeFeature = (item: Item): void => {
     // dispatch an action here to remove an item
   };
 
-  const buyItem = (item: Item) => {
+  const buyItem = (item: Item): void => {
     // dipsatch an action here to add an item
   };
 

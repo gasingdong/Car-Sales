@@ -10,3 +10,9 @@ export interface Car {
   image: string;
   features: Item[];
 }
+
+export interface StoreState {
+  additionalPrice: number;
+  car: Car;
+  store: Item[];
+}

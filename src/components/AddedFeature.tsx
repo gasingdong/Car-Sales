@@ -5,7 +5,7 @@ interface AddedFeature {
   feature: Item;
 }
 
-const AddedFeature = (props: AddedFeature) => {
+const AddedFeature = (props: AddedFeature): React.ReactElement => {
   const { feature } = props;
   return (
     <li>

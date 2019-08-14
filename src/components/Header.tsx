@@ -5,7 +5,7 @@ interface HeaderProps {
   car: Car;
 }
 
-const Header = (props: HeaderProps) => {
+const Header = (props: HeaderProps): React.ReactElement => {
   const { car } = props;
   return (
     <>
