@@ -1,0 +1,21 @@
+import React from 'react';
+import { Item } from '../interfaces/CarInterfaces';
+
+interface AdditionalFeatureProps {
+  feature: Item;
+}
+
+const AdditionalFeature = (props: AdditionalFeatureProps) => {
+  const { feature } = props;
+  return (
+    <li>
+      {/* Add an onClick that will let you add a feature to your car */}
+      <button type="button" className="button">
+        Add
+      </button>
+      {feature.name} (+{feature.price})
+    </li>
+  );
+};
+
+export default AdditionalFeature;
