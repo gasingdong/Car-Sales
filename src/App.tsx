@@ -1,28 +1,28 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { Item, StoreState } from './interfaces/interfaces';
+import { useDispatch, useSelector } from 'react-redux';
+import { Item, StoreState, Car } from './interfaces/interfaces';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 import { addFeatureAction, removeFeatureAction } from './actions/actions';
 
-interface AppProps {
-  addFeature: (feature: Item) => void;
-  removeFeature: (feature: Item) => void;
-}
-
-const App = (props: StoreState & AppProps): React.ReactElement => {
-  const { car, store, additionalPrice, addFeature, removeFeature } = props;
+const App = (): React.ReactElement => {
+  const car = useSelector((state: StoreState): Car => state.car);
+  const store = useSelector((state: StoreState): Item[] => state.store);
+  const additionalPrice = useSelector(
+    (state: StoreState): number => state.additionalPrice
+  );
+  const dispatch = useDispatch();
 
   const removeItem = (item: Item): void => {
-    removeFeature(item);
+    dispatch(removeFeatureAction(item));
   };
 
   const buyItem = (item: Item): void => {
     if (!car.features.find((feature): boolean => feature.id === item.id)) {
-      addFeature(item);
+      dispatch(addFeatureAction(item));
     }
   };
 
@@ -40,15 +40,4 @@ const App = (props: StoreState & AppProps): React.ReactElement => {
   );
 };
 
-const mapStateToProps = (state: StoreState): StoreState => {
-  return {
-    additionalPrice: state.additionalPrice,
-    car: state.car,
-    store: state.store,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { addFeature: addFeatureAction, removeFeature: removeFeatureAction }
-)(App);
+export default App;
