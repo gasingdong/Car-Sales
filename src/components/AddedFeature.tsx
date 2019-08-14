@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Item } from '../interfaces/CarInterfaces';
 
 interface AddedFeatureProps {
@@ -19,13 +18,4 @@ const AddedFeature = (props: AddedFeatureProps): React.ReactElement => {
   );
 };
 
-const mapStateToProps = (state: AddedFeatureProps): AddedFeatureProps => {
-  return {
-    feature: state.feature,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {}
-)(AddedFeature);
+export default AddedFeature;

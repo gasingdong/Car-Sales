@@ -18,7 +18,7 @@ const AdditionalFeatures = (
         <ol type="1">
           {store.map(
             (item): React.ReactElement => (
-              <AdditionalFeature key={item.id} />
+              <AdditionalFeature key={item.id} feature={item} />
             )
           )}
         </ol>

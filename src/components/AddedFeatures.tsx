@@ -16,7 +16,7 @@ const AddedFeatures = (props: AddedFeaturesProps): React.ReactElement => {
         <ol type="1">
           {car.features.map(
             (item): React.ReactElement => (
-              <AddedFeature key={item.id} />
+              <AddedFeature key={item.id} feature={item} />
             )
           )}
         </ol>
