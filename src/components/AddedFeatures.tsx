@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Car } from '../interfaces/CarInterfaces';
+import { Car } from '../interfaces/interfaces';
 import AddedFeature from './AddedFeature';
 
 interface AddedFeaturesProps {
@@ -27,13 +26,4 @@ const AddedFeatures = (props: AddedFeaturesProps): React.ReactElement => {
   );
 };
 
-const mapStateToProps = (state: AddedFeaturesProps): AddedFeaturesProps => {
-  return {
-    car: state.car,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {}
-)(AddedFeatures);
+export default AddedFeatures;

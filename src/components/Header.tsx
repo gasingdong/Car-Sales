@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { Car } from '../interfaces/CarInterfaces';
+import { Car } from '../interfaces/interfaces';
 
 interface HeaderProps {
   car: Car;
@@ -19,13 +18,4 @@ const Header = (props: HeaderProps): React.ReactElement => {
   );
 };
 
-const mapStateToProps = (state: HeaderProps): HeaderProps => {
-  return {
-    car: state.car,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {}
-)(Header);
+export default Header;

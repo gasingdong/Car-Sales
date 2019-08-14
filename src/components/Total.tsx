@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Car } from '../interfaces/CarInterfaces';
+import { Car } from '../interfaces/interfaces';
 
 interface TotalProps {
   car: Car;

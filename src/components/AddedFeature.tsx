@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from '../interfaces/CarInterfaces';
+import { Item } from '../interfaces/interfaces';
 
 interface AddedFeatureProps {
   feature: Item;

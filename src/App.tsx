@@ -1,39 +1,50 @@
 import React from 'react';
 
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { Item } from './interfaces/CarInterfaces';
-import { reducer } from './reducers/CarReducer';
+import { connect } from 'react-redux';
+import { Item, StoreState } from './interfaces/interfaces';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
+import { addFeatureAction } from './actions/actions';
 
-const App = (): React.ReactElement => {
-  const store = createStore(reducer);
+interface AppProps {
+  addFeature: (feature: Item) => void;
+}
 
+const App = (props: StoreState & AppProps): React.ReactElement => {
+  const { car, store, addFeature } = props;
   const removeFeature = (item: Item): void => {
     // dispatch an action here to remove an item
   };
 
   const buyItem = (item: Item): void => {
-    // dipsatch an action here to add an item
+    addFeature(item);
   };
 
   return (
-    <Provider store={store}>
-      <div className="boxes">
-        <div className="box">
-          <Header />
-          <AddedFeatures />
-        </div>
-        <div className="box">
-          <AdditionalFeatures />
-          <Total />
-        </div>
+    <div className="boxes">
+      <div className="box">
+        <Header car={car} />
+        <AddedFeatures car={car} />
       </div>
-    </Provider>
+      <div className="box">
+        <AdditionalFeatures store={store} buyItem={buyItem} />
+        <Total />
+      </div>
+    </div>
   );
 };
 
-export default App;
+const mapStateToProps = (state: StoreState): StoreState => {
+  return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    store: state.store,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addFeature: addFeatureAction }
+)(App);

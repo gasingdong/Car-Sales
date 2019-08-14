@@ -1,16 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import AdditionalFeature from './AdditionalFeature';
-import { Item } from '../interfaces/CarInterfaces';
+import { Item } from '../interfaces/interfaces';
 
 interface AdditionalFeaturesProps {
   store: Item[];
+  buyItem: (item: Item) => void;
 }
 
 const AdditionalFeatures = (
   props: AdditionalFeaturesProps
 ): React.ReactElement => {
-  const { store } = props;
+  const { store, buyItem } = props;
+
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -18,7 +19,11 @@ const AdditionalFeatures = (
         <ol type="1">
           {store.map(
             (item): React.ReactElement => (
-              <AdditionalFeature key={item.id} feature={item} />
+              <AdditionalFeature
+                key={item.id}
+                feature={item}
+                buyItem={buyItem}
+              />
             )
           )}
         </ol>
@@ -29,15 +34,4 @@ const AdditionalFeatures = (
   );
 };
 
-const mapStateToProps = (
-  state: AdditionalFeaturesProps
-): AdditionalFeaturesProps => {
-  return {
-    store: state.store,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {}
-)(AdditionalFeatures);
+export default AdditionalFeatures;
