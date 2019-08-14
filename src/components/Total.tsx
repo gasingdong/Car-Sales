@@ -16,14 +16,4 @@ const Total = (props: TotalProps): React.ReactElement => {
   );
 };
 
-const mapStateToProps = (state: TotalProps): TotalProps => {
-  return {
-    car: state.car,
-    additionalPrice: state.additionalPrice,
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  {}
-)(Total);
+export default Total;

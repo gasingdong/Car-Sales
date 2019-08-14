@@ -14,7 +14,7 @@ interface AppProps {
 }
 
 const App = (props: StoreState & AppProps): React.ReactElement => {
-  const { car, store, addFeature, removeFeature } = props;
+  const { car, store, additionalPrice, addFeature, removeFeature } = props;
 
   const removeItem = (item: Item): void => {
     removeFeature(item);
@@ -34,7 +34,7 @@ const App = (props: StoreState & AppProps): React.ReactElement => {
       </div>
       <div className="box">
         <AdditionalFeatures store={store} buyItem={buyItem} />
-        <Total />
+        <Total car={car} additionalPrice={additionalPrice} />
       </div>
     </div>
   );
