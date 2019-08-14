@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Car } from '../interfaces/CarInterfaces';
 
 interface TotalProps {
@@ -15,4 +16,14 @@ const Total = (props: TotalProps): React.ReactElement => {
   );
 };
 
-export default Total;
+const mapStateToProps = (state: TotalProps): TotalProps => {
+  return {
+    car: state.car,
+    additionalPrice: state.additionalPrice,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Total);

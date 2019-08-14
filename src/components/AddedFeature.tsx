@@ -1,11 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Item } from '../interfaces/CarInterfaces';
 
-interface AddedFeature {
+interface AddedFeatureProps {
   feature: Item;
 }
 
-const AddedFeature = (props: AddedFeature): React.ReactElement => {
+const AddedFeature = (props: AddedFeatureProps): React.ReactElement => {
   const { feature } = props;
   return (
     <li>
@@ -18,4 +19,13 @@ const AddedFeature = (props: AddedFeature): React.ReactElement => {
   );
 };
 
-export default AddedFeature;
+const mapStateToProps = (state: AddedFeatureProps): AddedFeatureProps => {
+  return {
+    feature: state.feature,
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(AddedFeature);
